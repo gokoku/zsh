@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #--------------------------------------------------------------------------------
 # General
 #--------------------------------------------------------------------------------
@@ -6,12 +13,15 @@ PATH=$PATH:/Library/TeX/texbin
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/.anyenv/bin:$PATH
-PATH=/usr/local/opt/mysql@5.6/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$HOME/.rowsell/bin:$PATH
+PATH=/usr/local/opt/mysql-client/bin:$PATH
 
 export PATH
 export SDKMAN_DIR="/Users/george/.sdkman"
 export PGDATA='/usr/local/var/postgres'
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
 
 # keyバインドをEmacs
 bindkey -e
@@ -132,6 +142,7 @@ alias la='ls -laG'
 # Some tools shortcuts
 alias g='git'
 alias ec='emacsclient'
+alias d='docker'
 # extention
 alias -s php='emacsclient'
 alias -s rb='emacsclient'
@@ -176,17 +187,29 @@ esac
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/george/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/george/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/george/opt/anaconda3/etc/profile.d/conda.sh"
+function ana() {
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/george/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        echo "*** anaconda setup ***"
+        eval "$__conda_setup"
     else
-        export PATH="/Users/george/opt/anaconda3/bin:$PATH"
+        if [ -f "/Users/george/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/george/opt/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/george/opt/anaconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+    # <<< conda initialize <<<
+}
+
+
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/zsh/.p10k.zsh.
+[[ ! -f ~/zsh/.p10k.zsh ]] || source ~/zsh/.p10k.zsh
+
+# Auto Suggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
