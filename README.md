@@ -3,6 +3,7 @@
 
 my zsh env
 
+~/.zshenv
 ```shell:.zshenv
 export ZDOTDIR=$HOME/zsh
 ```
