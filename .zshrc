@@ -22,6 +22,7 @@ export SDKMAN_DIR="/Users/george/.sdkman"
 export PGDATA='/usr/local/var/postgres'
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
+export EDITOR=vi
 
 # keyバインドをEmacs
 bindkey -e
