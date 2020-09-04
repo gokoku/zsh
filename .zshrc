@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 #--------------------------------------------------------------------------------
 # General
 #--------------------------------------------------------------------------------
@@ -14,14 +15,15 @@ PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/.anyenv/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
-PATH=$HOME/.rowsell/bin:$PATH
-PATH=/usr/local/opt/mysql-client/bin:$PATH
+PATH=$HOME/.roswell/bin:$PATH
 
 export PATH
 export SDKMAN_DIR="/Users/george/.sdkman"
 export PGDATA='/usr/local/var/postgres'
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export PATH=$JAVA_HOME/bin:$PATH
+export GITSTATUS_LOG_LEVEL=DEBUG
 
 # keyバインドをEmacs
 bindkey -e
