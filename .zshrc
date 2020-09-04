@@ -51,7 +51,6 @@ export FZF_DEFAULT_OPTS='
 --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104
 --color info:183,prompt:110,spinner:107,pointer:167,marker:215
 '
-
 #--------------------------------------------------------------------------------
 # 履歴
 #--------------------------------------------------------------------------------
@@ -117,6 +116,12 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
+
+#--------------------------------------------------------------------------------
+# cd の拡張コマンド (compdefコマンドを使ってるので、compini の後にする)
+#--------------------------------------------------------------------------------
+[ -f ~/zsh/enhancd/init.sh ] && source ~/zsh/enhancd/init.sh
+export ENHANCD_FILTER=fzf
 
 #--------------------------------------------------------------------------------
 # Alias
