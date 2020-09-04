@@ -5,3 +5,4 @@ zaw/
 .zsh_history
 .p10k.zsh
 .zcompdump
+.fzf.zsh

@@ -24,6 +24,7 @@ export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export PATH=$JAVA_HOME/bin:$PATH
 export GITSTATUS_LOG_LEVEL=DEBUG
+export EDITOR=vi
 
 # keyバインドをEmacs
 bindkey -e
@@ -43,8 +44,9 @@ eval "$(anyenv init -)"
 [[ -s "/Users/george/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/george/.sdkman/bin/sdkman-init.sh"
 #--------------------------------------------------------------------------------
 # fzf インタラクティブフィルター関数
+# update 'cd fzf && ./install'
 #--------------------------------------------------------------------------------
-[ -f ~/zsh/.fzf.zsh ] && source ~/zsh/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='
 --height 40% --layout=reverse --border
