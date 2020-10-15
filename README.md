@@ -13,6 +13,8 @@ tools
 $ brew install fzf
 $ (brew --prefix)/opt/fzf/install
 
+$ git clone git@github.comb4b4r07/enhancd.git ~/zsh/
+
 $ brew install ripgrep
 $ brew install romkatv/powerlevel10k/powerlevel10k
 $ brew install zsh-autosuggestions
