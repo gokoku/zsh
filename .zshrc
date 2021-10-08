@@ -1,3 +1,4 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,16 +14,17 @@ PATH=$PATH:$HOME/bin
 PATH=$PATH:/Library/TeX/texbin
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=$HOME/.anyenv/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$HOME/.roswell/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
+PATH=$HOME/flutter/bin:$PATH
+PATH="$HOME/.roswell/bin:$PATH"
+PATH="/usr/local/opt/mysql-client/bin:$PATH"
+PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
 export PATH
-export SDKMAN_DIR="/Users/george/.sdkman"
+
 export PGDATA='/usr/local/var/postgres'
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH=$JAVA_HOME/bin:$PATH
 export GITSTATUS_LOG_LEVEL=DEBUG
 export EDITOR=vi
 
@@ -35,9 +37,9 @@ setopt no_beep
 #--------------------------------------------------------------------------------
 disable r
 #--------------------------------------------------------------------------------
-# anyenv
+# asdf-vm
 #--------------------------------------------------------------------------------
-eval "$(anyenv init -)"
+. $HOME/.asdf/asdf.sh
 #--------------------------------------------------------------------------------
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 #--------------------------------------------------------------------------------
@@ -84,7 +86,8 @@ RPROMPT="%F{240}%/%f %{${reset_color}%}"
 #--------------------------------------------------------------------------------
 # 強力 補完
 fpath=(/usr/local/share/zsh-completions/src $fpath)
-autoload -U compinit
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
 compinit
 
 # 予測機能
@@ -223,3 +226,9 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+export JAVA_HOME=$(dirname $(dirname $(asdf which java)))
+
+# ghcup-env
+[ -f "/Users/george/.ghcup/env" ] && source "/Users/george/.ghcup/env"
