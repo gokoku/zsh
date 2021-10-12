@@ -1,9 +1,11 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 
 #--------------------------------------------------------------------------------
 # General
@@ -12,11 +14,19 @@ PATH=$PATH:$HOME/bin
 PATH=$PATH:/Library/TeX/texbin
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=$HOME/.local/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
-PATH=$HOME/.rowsell/bin:$PATH
-PATH=/usr/local/opt/mysql-client/bin:$PATH
+PATH=$HOME/.roswell/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
+PATH=$HOME/flutter/bin:$PATH
+PATH="$HOME/.roswell/bin:$PATH"
+PATH="/usr/local/opt/mysql-client/bin:$PATH"
+PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
+
 export PATH
+
+export PGDATA='/usr/local/var/postgres'
+export GITSTATUS_LOG_LEVEL=DEBUG
+export EDITOR=vi
 
 # keyバインドをEmacs
 bindkey -e
@@ -32,15 +42,15 @@ disable r
 . $HOME/.asdf/asdf.sh
 #--------------------------------------------------------------------------------
 # fzf インタラクティブフィルター関数
+# update 'cd fzf && ./install'
 #--------------------------------------------------------------------------------
-[ -f ~/zsh/.fzf.zsh ] && source ~/zsh/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='
 --height 40% --layout=reverse --border
 --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104
 --color info:183,prompt:110,spinner:107,pointer:167,marker:215
 '
-
 #--------------------------------------------------------------------------------
 # 履歴
 #--------------------------------------------------------------------------------
@@ -107,6 +117,12 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
+
+#--------------------------------------------------------------------------------
+# cd の拡張コマンド (compdefコマンドを使ってるので、compini の後にする)
+#--------------------------------------------------------------------------------
+[ -f ~/zsh/enhancd/init.sh ] && source ~/zsh/enhancd/init.sh
+export ENHANCD_FILTER=fzf
 
 #--------------------------------------------------------------------------------
 # Alias
