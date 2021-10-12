@@ -12,16 +12,11 @@ PATH=$PATH:$HOME/bin
 PATH=$PATH:/Library/TeX/texbin
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=$HOME/.anyenv/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$HOME/.rowsell/bin:$PATH
 PATH=/usr/local/opt/mysql-client/bin:$PATH
-
 export PATH
-export SDKMAN_DIR="/Users/george/.sdkman"
-export PGDATA='/usr/local/var/postgres'
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
 
 # keyバインドをEmacs
 bindkey -e
@@ -32,13 +27,9 @@ setopt no_beep
 #--------------------------------------------------------------------------------
 disable r
 #--------------------------------------------------------------------------------
-# anyenv
+# asdf-vm
 #--------------------------------------------------------------------------------
-eval "$(anyenv init -)"
-#--------------------------------------------------------------------------------
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#--------------------------------------------------------------------------------
-[[ -s "/Users/george/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/george/.sdkman/bin/sdkman-init.sh"
+. $HOME/.asdf/asdf.sh
 #--------------------------------------------------------------------------------
 # fzf インタラクティブフィルター関数
 #--------------------------------------------------------------------------------
@@ -81,6 +72,7 @@ RPROMPT="%F{240}%/%f %{${reset_color}%}"
 #--------------------------------------------------------------------------------
 # 強力 補完
 fpath=(/usr/local/share/zsh-completions/src $fpath)
+fpash=(${ASDF_DIR}/completions $fpath)
 autoload -U compinit
 compinit
 
@@ -137,7 +129,7 @@ alias fgrep='fgrep --color=auto'
 alias find_word='find . -print0 | xargs -0 grep ' # recursive search word in files
 #
 # Some shortcuts for different directory listings
-alias ll='ls -lG'
+alias ll='ls -laG'
 alias la='ls -laG'
 # Some tools shortcuts
 alias g='git'
@@ -213,3 +205,8 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export JAVA_HOME=$(dirname $(dirname $(asdf which java)))
+
+# ghcup-env
+[ -f "/Users/george/.ghcup/env" ] && source "/Users/george/.ghcup/env"
