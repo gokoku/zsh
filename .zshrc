@@ -10,6 +10,11 @@ fi
 #--------------------------------------------------------------------------------
 # General
 #--------------------------------------------------------------------------------
+export PGDATA='/usr/local/var/postgres'
+export GITSTATUS_LOG_LEVEL=DEBUG
+export EDITOR=vi
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/Library/TeX/texbin
 PATH=/usr/local/sbin:$PATH
@@ -20,13 +25,9 @@ PATH=$HOME/.local/bin:$PATH
 PATH=$HOME/flutter/bin:$PATH
 PATH="$HOME/.roswell/bin:$PATH"
 PATH="/usr/local/opt/mysql-client/bin:$PATH"
-PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
+PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 export PATH
-
-export PGDATA='/usr/local/var/postgres'
-export GITSTATUS_LOG_LEVEL=DEBUG
-export EDITOR=vi
 
 # keyバインドをEmacs
 bindkey -e
