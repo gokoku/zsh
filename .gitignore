@@ -8,3 +8,4 @@ zaw/
 .fzf.zsh
 .zcompcache/
 .zsh_sessions/
+.zcompdump*
