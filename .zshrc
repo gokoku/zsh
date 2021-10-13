@@ -42,10 +42,6 @@ disable r
 #--------------------------------------------------------------------------------
 . $HOME/.asdf/asdf.sh
 #--------------------------------------------------------------------------------
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#--------------------------------------------------------------------------------
-[[ -s "/Users/george/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/george/.sdkman/bin/sdkman-init.sh"
-#--------------------------------------------------------------------------------
 # fzf インタラクティブフィルター関数
 # update 'cd fzf && ./install'
 #--------------------------------------------------------------------------------
@@ -87,8 +83,8 @@ RPROMPT="%F{240}%/%f %{${reset_color}%}"
 #--------------------------------------------------------------------------------
 # 強力 補完
 fpath=(/usr/local/share/zsh-completions/src $fpath)
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
+fpash=(${ASDF_DIR}/completions $fpath)
+autoload -U compinit
 compinit
 
 # 予測機能
@@ -150,7 +146,7 @@ alias fgrep='fgrep --color=auto'
 alias find_word='find . -print0 | xargs -0 grep ' # recursive search word in files
 #
 # Some shortcuts for different directory listings
-alias ll='ls -lG'
+alias ll='ls -laG'
 alias la='ls -laG'
 # Some tools shortcuts
 alias g='git'
@@ -200,7 +196,6 @@ esac
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
 function ana() {
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
@@ -227,7 +222,6 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 
 export JAVA_HOME=$(dirname $(dirname $(asdf which java)))
 
