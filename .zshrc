@@ -24,7 +24,6 @@ PATH=$HOME/.roswell/bin:$PATH
 PATH=$HOME/.local/bin:$PATH
 PATH=$HOME/flutter/bin:$PATH
 PATH="$HOME/.roswell/bin:$PATH"
-PATH="/usr/local/opt/mysql-client/bin:$PATH"
 PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 export PATH
