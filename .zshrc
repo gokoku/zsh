@@ -22,9 +22,11 @@ PATH=/usr/local/bin:$PATH
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$HOME/.roswell/bin:$PATH
 PATH=$HOME/.local/bin:$PATH
-PATH=$HOME/flutter/bin:$PATH
-PATH="$HOME/.roswell/bin:$PATH"
-PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+PATH=$HOME/.pub-cache/bin:$PATH
+PATH=$PATH:$HOME/fvm/default/bin
+PATH=$HOME/.roswell/bin:$PATH
+PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 export PATH
 
