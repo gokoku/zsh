@@ -13,7 +13,7 @@ tools
 $ brew install fzf
 $ (brew --prefix)/opt/fzf/install
 
-$ git clone git@github.comb4b4r07/enhancd.git ~/zsh/
+$ git clone git@github.com:b4b4r07/enhancd.git ~/zsh/
 
 $ brew install ripgrep
 $ brew install romkatv/powerlevel10k/powerlevel10k
@@ -39,7 +39,7 @@ $ sudo apt install -y \
        ca-certificates \
        curl \
        gnupg-agent \
-       software-properties-commn
+       software-properties-common
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo apt-key fingerprint 0EBFCD88
 $ sudo add-apt-repository \
