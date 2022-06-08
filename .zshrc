@@ -10,23 +10,25 @@ fi
 #--------------------------------------------------------------------------------
 # General
 #--------------------------------------------------------------------------------
-export PGDATA='/usr/local/var/postgres'
 export GITSTATUS_LOG_LEVEL=DEBUG
 export EDITOR=vi
-export ANDROID_HOME="$HOME/Library/Android/sdk"
 
-PATH=$PATH:$HOME/bin
-PATH=$PATH:/Library/TeX/texbin
-PATH=/usr/local/sbin:$PATH
-PATH=/usr/local/bin:$PATH
-PATH=$PATH:$HOME/.composer/vendor/bin
-PATH=$HOME/.roswell/bin:$PATH
-PATH=$HOME/.local/bin:$PATH
-PATH=$HOME/.pub-cache/bin:$PATH
-PATH=$PATH:$HOME/fvm/default/bin
-PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-PATH="/usr/local/opt/mysql-client/bin:$PATH"
-PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+PATH="$PATH:$HOME/bin"
+PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:$PATH"
+PATH="$PATH:$HOME/.composer/vendor/bin"
+PATH="$HOME/.roswell/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.pub-cache/bin:$PATH"
+
+case ${OSTYPE} in
+    darwin*)
+        export ANDROID_HOME="$HOME/Library/Android/sdk"
+        PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+        PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+        PATH="$PATH:/Library/TeX/texbin"
+        PATH="$PATH:$HOME/fvm/default/bin"
+esac
 
 export PATH
 
@@ -228,3 +230,9 @@ export JAVA_HOME=$(dirname $(dirname $(asdf which java)))
 
 # ghcup-env
 [ -f "/Users/george/.ghcup/env" ] && source "/Users/george/.ghcup/env"
+
+# SSH to use Linuxbrew
+case ${OSTYPE} in
+    linux*)
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+esac
