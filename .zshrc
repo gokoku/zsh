@@ -1,4 +1,3 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -208,7 +207,7 @@ function ana() {
         eval "$__conda_setup"
     else
         if [ -f "/Users/george/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/george/opt/anaconda3/etc/profile.d/conda.sh"
+# . "/Users/george/opt/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
             export PATH="/Users/george/opt/anaconda3/bin:$PATH"
         fi
